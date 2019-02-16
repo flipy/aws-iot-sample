@@ -1,0 +1,107 @@
+{
+	"info": {
+		"_postman_id": "63fb4f2f-21c0-49e1-9a3c-7866a1c98ce2",
+		"name": "aws iot API collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Subscribe",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n\t\"topic\": \"test\" \n}"
+				},
+				"url": {
+					"raw": "http://{{node_server}}:{{node_port}}/api/subscribe",
+					"protocol": "http",
+					"host": [
+						"{{node_server}}"
+					],
+					"port": "{{node_port}}",
+					"path": [
+						"api",
+						"subscribe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Publish",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n\t\"topic\": \"iot/data\",\n\t\"message\": {\"deviceID\": \"test\", \"timestamp\": \"test\"}\n}"
+				},
+				"url": {
+					"raw": "http://{{node_server}}:{{node_port}}/api/message",
+					"protocol": "http",
+					"host": [
+						"{{node_server}}"
+					],
+					"port": "{{node_port}}",
+					"path": [
+						"api",
+						"message"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "c3ee5fc6-17e9-4693-b496-f792e73ed9c4",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "26d8df26-292d-4c34-aaee-d7283a9e88b3",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "02fda495-8487-446a-8a9f-40f5294f4bdd",
+			"key": "node_server",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "0574c504-bbdf-4cf1-a577-5a9b6364280d",
+			"key": "node_port",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

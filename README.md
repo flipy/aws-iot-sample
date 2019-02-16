@@ -4,6 +4,10 @@
 
 `sudo apt install mosquitto mosquitto-clients -y`
 
+2. Follow guidelines to bridge AWS IOT with Mosquitto broker
+
+(https://aws.amazon.com/blogs/iot/how-to-bridge-mosquitto-mqtt-broker-to-aws-iot/)
+
 2. Copy bridge configuration
 
 `sudo cp bridge.conf /etc/mosquitto/conf.d/`

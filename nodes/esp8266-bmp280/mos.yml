@@ -1,0 +1,56 @@
+author: mongoose-os
+description: BME280 sensor usage example (JavaScript)
+version: 1.0
+
+libs_version: ${mos.version}
+modules_version: ${mos.version}
+mongoose_os_version: ${mos.version}
+
+filesystem:
+  - fs
+libs:
+    # common mgos libs
+  - origin: https://github.com/mongoose-os-libs/boards
+  - origin: https://github.com/mongoose-os-libs/ca-bundle
+  - origin: https://github.com/mongoose-os-libs/i2c
+  - origin: https://github.com/mongoose-os-libs/spi
+  - origin: https://github.com/mongoose-os-libs/rpc-service-config
+  - origin: https://github.com/mongoose-os-libs/rpc-service-fs
+#  - origin: https://github.com/mongoose-os-libs/rpc-service-gpio
+#  - origin: https://github.com/mongoose-os-libs/rpc-service-i2c
+#  - origin: https://github.com/mongoose-os-libs/rpc-service-ota
+  - origin: https://github.com/mongoose-os-libs/rpc-uart
+#  - origin: https://github.com/mongoose-os-libs/rpc-loopback
+#  - origin: https://github.com/mongoose-os-libs/http-server
+#  - origin: https://github.com/mongoose-os-libs/ota-http-server
+#  - origin: https://github.com/mongoose-os-libs/vfs-dev-spi-flash
+  - origin: https://github.com/mongoose-os-libs/wifi
+
+    # libs necessary for the current app
+  - origin: https://github.com/mongoose-os-libs/arduino-adafruit-bme280
+  - origin: https://github.com/mongoose-os-libs/mjs
+  - origin: https://github.com/mongoose-os-libs/aws
+  - origin: https://github.com/mongoose-os-libs/sntp
+#  - origin: https://github.com/mongoose-os-libs/mqtt
+config_schema:
+#  - ["aws.thing_name", "esp8266-bmp280"]
+#  - ["mqtt.pub", "s", "/response", {title: "Publish topic"}]
+#  - ["mqtt.sub", "s", "/request", {title: "Subscribe topic"}]
+#  - ["mqtt.server", "broker.mqttdashboard.com:1883"]
+  - ["mqtt.enable", true]
+  - ["device.id", "esp8266-bmp280"]
+  - ["device.password", "test"]
+  - ["i2c.enable", true]
+  - ["i2c.sda_gpio", 5]
+  - ["i2c.scl_gpio", 4]
+  - ["i2c.address", "s", "0x76", {title: "The device i2c address usually 0x76 or 0x77"}]
+#  - ["i2c.debug", true]
+#  - ["debug.level", 3]
+
+tags:
+  - js
+  - aws
+  - hw
+  - cloud
+
+manifest_version: 2017-05-18

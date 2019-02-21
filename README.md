@@ -30,7 +30,7 @@ Steps:
 8. Create DynamoDB table to store data
 9. Create AWS Cognito Identity Provider -- modify the unauthorized IAM role to be able to query DynamoDB
 10. Create a S3 bucket and enable Website Hosting -- remeber to set it public
-11. Create a AWS IoT rule to insert shadow data to DynamoDB split by columns -- use shadow/update/accepted topic
+11. Create a AWS IoT rule to insert shadow data to DynamoDB split by columns -- use shadow/update/accepted topic and the following query SELECT state.reported.* from '$aws/things/MY-THING/shadow/update/accepted'
 12. Upload the content of the web folder into S3, and modify Congito Identity Pool ID on refresh.js 
 
 Debugging:

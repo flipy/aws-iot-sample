@@ -60,7 +60,7 @@ function applyAction() {
 }
 
 // Milliseconds. How often to send temperature readings to the cloud
-let freq = 30000;
+let freq = 60000;
 
 let state = {
   on: false,
@@ -82,7 +82,7 @@ let getStatus = function() {
   };
 };
 
-RPC.addHandler('Heater.SetState', function(args) {
+RPC.addHandler('Sensor.SetState', function(args) {
   GPIO.write(pin, args.on || 0);
   AWS.Shadow.update(0, {
     desired: {
@@ -92,7 +92,7 @@ RPC.addHandler('Heater.SetState', function(args) {
   return true;
 });
 
-RPC.addHandler('Heater.GetState', function(args) {
+RPC.addHandler('Sensor.GetState', function(args) {
   return getStatus();
 });
 
@@ -103,8 +103,12 @@ Timer.set(freq, Timer.REPEAT, function() {
 }, null);
 
 function reportState() {
-  print('Reporting state:', JSON.stringify(state));
-  AWS.Shadow.update(0, state);
+  if(state.timestamp <= 1000) {
+    print('Initial reading, not reporting);
+  } else {
+    print('Reporting state:', JSON.stringify(state));
+    AWS.Shadow.update(0, state);
+  }
 }
 
 AWS.Shadow.setStateHandler(function(ud, ev, reported, desired) {

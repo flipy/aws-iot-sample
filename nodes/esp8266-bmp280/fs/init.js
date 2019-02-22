@@ -104,7 +104,7 @@ Timer.set(freq, Timer.REPEAT, function() {
 
 function reportState() {
   if(state.timestamp <= 1000) {
-    print('Initial reading, not reporting);
+    print('Initial reading, not reporting');
   } else {
     print('Reporting state:', JSON.stringify(state));
     AWS.Shadow.update(0, state);
